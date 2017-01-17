@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="departements">
+        <item>Ain</item>
+        <item>Aisne</item>
+        <item>Allier</item>
+        <item>Hautes-Alpes</item>
+        <item>Alpes-de-Haute-Provence</item>
+        <item>Alpes-Maritimes</item>
+        <item>Ardèche</item>
+        <item>Ardennes</item>
+        <item>Ariège</item>
+        <item>Aube</item>
+        <item>Aude</item>
+        <item>Aveyron</item>
+    </string-array>
+</resources>
