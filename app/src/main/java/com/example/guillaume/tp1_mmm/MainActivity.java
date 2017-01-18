@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     private void ajouter_telephone() {
         LinearLayout layout = (LinearLayout) findViewById(R.id.layout_champs);
         if (edit_tel == null) {
-            edit_tel = new EditText(getApplicationContext());
+            edit_tel = new EditText(this);
             edit_tel.setHint("Numéro de téléphone");
             edit_tel.setInputType(InputType.TYPE_CLASS_PHONE);
             layout.addView(edit_tel);
