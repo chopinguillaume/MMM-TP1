@@ -3,10 +3,6 @@ package com.example.guillaume.tp1_mmm.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by guillaume on 16/01/17.
- */
-
 public class User implements Parcelable {
 
     private String prenom;
@@ -69,7 +65,7 @@ public class User implements Parcelable {
 
     }
 
-    protected User(Parcel in) {
+    private User(Parcel in) {
         prenom = in.readString();
         nom = in.readString();
         ville = in.readString();

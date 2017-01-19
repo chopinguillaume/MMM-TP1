@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void valider(View view) {
-        Intent i = new Intent(getApplicationContext(), ShowInformation.class);
+        Intent i = new Intent(getApplicationContext(), ListActivity.class);
         User user = new User();
 
         String prenom = ((EditText) findViewById(R.id.edit_prenom)).getText().toString();
@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         i.putExtra("user", user);
         startActivity(i);
+        finish();
     }
 
     private void wikipedia() {
@@ -119,10 +120,18 @@ public class MainActivity extends AppCompatActivity {
     private void ajouter_telephone() {
         LinearLayout layout = (LinearLayout) findViewById(R.id.layout_champs);
         if (edit_tel == null) {
-            edit_tel = new EditText(getApplicationContext());
+            edit_tel = new EditText(this);
             edit_tel.setHint("Numéro de téléphone");
             edit_tel.setInputType(InputType.TYPE_CLASS_PHONE);
             layout.addView(edit_tel);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),ListActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+        finish();
     }
 }
