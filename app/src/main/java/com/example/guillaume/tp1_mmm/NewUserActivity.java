@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.guillaume.tp1_mmm.model.User;
 
-public class MainActivity extends AppCompatActivity {
+public class NewUserActivity extends AppCompatActivity {
 
     private EditText edit_tel = null;
 

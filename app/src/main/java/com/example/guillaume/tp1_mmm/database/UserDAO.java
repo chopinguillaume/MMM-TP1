@@ -39,7 +39,7 @@ public class UserDAO {
         return cursorToUser(c);
     }
 
-    public List<Map<String,String>> getAllUsers() {
+    public List<Map<String,String>> getAllUsersAsMapList() {
         Cursor c = context.getContentResolver().query(allUsers, null, null, null, null);
         List<Map<String,String>> users = new ArrayList<>();
 
@@ -58,6 +58,26 @@ public class UserDAO {
                 users.add(map);
             } while (c.moveToNext());
         }
+        return users;
+    }
+
+    public List<User> getAllUsers(){
+        List<Map<String, String>> userMap = getAllUsersAsMapList();
+        List<User> users = new ArrayList<>();
+
+        for (Map<String, String> map : userMap) {
+            User u = new User();
+
+            u.setNom(map.get(UserProvider.USER_NOM));
+            u.setPrenom(map.get(UserProvider.USER_PRENOM));
+            u.setDate(map.get(UserProvider.USER_DATE));
+            u.setVille(map.get(UserProvider.USER_VILLE));
+            u.setDepartement(map.get(UserProvider.USER_DEPARTEMENT));
+            u.setTelephone(map.get(UserProvider.USER_TELEPHONE));
+
+            users.add(u);
+        }
+
         return users;
     }
 

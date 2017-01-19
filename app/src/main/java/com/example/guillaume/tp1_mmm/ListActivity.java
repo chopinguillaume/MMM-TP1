@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -24,7 +25,7 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-        UserDAO dao = new UserDAO(getApplicationContext());
+        final UserDAO dao = new UserDAO(getApplicationContext());
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -34,16 +35,26 @@ public class ListActivity extends AppCompatActivity {
             }
         }
 
-        SimpleAdapter listAdapter = new SimpleAdapter(this, dao.getAllUsers(), R.layout.item,
+        SimpleAdapter listAdapter = new SimpleAdapter(this, dao.getAllUsersAsMapList(), R.layout.item,
                 new String[]{"nom", "prenom", "date", "ville"},
                 new int[]{R.id.text_list_nom, R.id.text_list_prenom, R.id.text_list_date, R.id.text_list_ville});
 
         ((ListView) findViewById(R.id.list_clients)).setAdapter(listAdapter);
 
+        ((ListView) findViewById(R.id.list_clients)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                User u = dao.getAllUsers().get(position);
+                Intent i = new Intent(getApplicationContext(), ShowInformation.class);
+                i.putExtra("user", u);
+                startActivity(i);
+            }
+        });
+
     }
 
     private void nouveauClient() {
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), NewUserActivity.class);
         startActivity(i);
         finish();
     }
