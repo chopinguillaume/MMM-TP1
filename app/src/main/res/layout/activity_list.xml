@@ -25,6 +25,12 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/btn_client">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_filter"
+            android:hint="User filter"/>
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

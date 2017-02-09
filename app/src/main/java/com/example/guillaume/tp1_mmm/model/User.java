@@ -100,4 +100,8 @@ public class User implements Parcelable {
         dest.writeString(telephone);
         dest.writeString(departement);
     }
+
+    public String getFullname() {
+        return prenom + " " + nom;
+    }
 }

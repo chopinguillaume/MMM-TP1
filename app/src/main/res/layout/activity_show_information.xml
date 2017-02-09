@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/text_prenomnom"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"/>
 
     <TextView
         android:text="Né(e) le "
@@ -25,7 +26,8 @@
         android:id="@+id/textView2"
         android:layout_below="@+id/text_prenomnom"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="15sp"/>
 
     <TextView
         android:text="DATE"
@@ -35,7 +37,8 @@
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_toEndOf="@+id/textView2"
+        android:textSize="15sp"/>
 
     <TextView
         android:text="VILLE"
@@ -45,7 +48,8 @@
         android:layout_alignBaseline="@+id/textView4"
         android:layout_alignBottom="@+id/textView4"
         android:layout_toRightOf="@+id/textView4"
-        android:layout_toEndOf="@+id/textView4" />
+        android:layout_toEndOf="@+id/textView4"
+        android:textSize="15sp"/>
 
     <TextView
         android:text="à "
@@ -54,7 +58,8 @@
         android:id="@+id/textView4"
         android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="15sp"/>
 
     <TextView
         android:text="DEPARTEMENT"
@@ -63,7 +68,8 @@
         android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/text_departement" />
+        android:id="@+id/text_departement"
+        android:textSize="15sp" />
 
     <TextView
         android:text="Téléphone : "
@@ -72,7 +78,8 @@
         android:layout_below="@+id/text_departement"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/label_telephone" />
+        android:id="@+id/label_telephone"
+        android:textSize="15sp" />
 
     <TextView
         android:text="TELEPHONE"
@@ -82,5 +89,6 @@
         android:layout_alignBaseline="@+id/label_telephone"
         android:layout_alignBottom="@+id/label_telephone"
         android:layout_toRightOf="@+id/label_telephone"
-        android:layout_toEndOf="@+id/label_telephone" />
+        android:layout_toEndOf="@+id/label_telephone"
+        android:textSize="15sp" />
 </RelativeLayout>
