@@ -1,6 +1,7 @@
 package com.example.guillaume.tp1_mmm;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +25,18 @@ public class UserListAdapter extends BaseAdapter implements Filterable {
 
     public UserListAdapter(Context context, List<User> users) {
         mContext = context;
-        this.users = users;
         inflater = LayoutInflater.from(mContext);
+        this.users = users;
         this.filteredList = new ArrayList<>();
         this.filteredList.addAll(users);
+    }
+
+    public void updateUserList(List<User> users){
+        Log.e("USERLISTADAPTER",users.toString());
+        this.users.clear();
+        this.users.addAll(users);
+        filteredList.clear();
+        filteredList.addAll(users);
     }
 
     public class ViewHolder {
@@ -65,7 +74,7 @@ public class UserListAdapter extends BaseAdapter implements Filterable {
             holder = (ViewHolder) view.getTag();
         }
         // Set the results into TextViews
-        holder.fullname.setText(filteredList.get(position).getFullname());
+        holder.fullname.setText(filteredList.get(position).fullname());
         holder.ville.setText(filteredList.get(position).getVille());
         holder.date.setText(filteredList.get(position).getDate());
 
@@ -85,7 +94,7 @@ public class UserListAdapter extends BaseAdapter implements Filterable {
                 for (int i = 0; i < users.size(); i++) {
                     User user = users.get(i);
                     String filter = constraint.toString().toLowerCase();
-                    if (user.getFullname().toLowerCase().contains(filter) ||
+                    if (user.fullname().toLowerCase().contains(filter) ||
                             user.getVille().toLowerCase().contains(constraint) ||
                             user.getDepartement().toLowerCase().contains(constraint) ||
                             user.getDate().toLowerCase().contains(constraint)) {

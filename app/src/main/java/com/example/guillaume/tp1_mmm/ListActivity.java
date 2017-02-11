@@ -10,8 +10,10 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.example.guillaume.tp1_mmm.database.UserDAO;
+import com.example.guillaume.tp1_mmm.database.FirebaseDAO;
 import com.example.guillaume.tp1_mmm.model.User;
+
+import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -27,19 +29,11 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-        final UserDAO dao = new UserDAO(getApplicationContext());
-
-        Bundle b = getIntent().getExtras();
-        if (b != null) {
-            User u = b.getParcelable("user");
-            if (u != null) {
-                dao.createUser(u.getNom(), u.getPrenom(), u.getDate(), u.getVille(), u.getDepartement(), u.getTelephone());
-            }
-        }
-
-        final UserListAdapter userListAdapter = new UserListAdapter(this, dao.getAllUsers());
+        final UserListAdapter userListAdapter = new UserListAdapter(this, new ArrayList<User>());
 
         ((ListView) findViewById(R.id.list_clients)).setAdapter(userListAdapter);
+
+        FirebaseDAO.updateOnChanges(getApplicationContext(), userListAdapter);
 
         ((ListView) findViewById(R.id.list_clients)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

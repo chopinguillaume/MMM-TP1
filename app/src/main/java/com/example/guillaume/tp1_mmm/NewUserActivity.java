@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.guillaume.tp1_mmm.database.FirebaseDAO;
 import com.example.guillaume.tp1_mmm.model.User;
 
 public class NewUserActivity extends AppCompatActivity {
@@ -74,15 +75,21 @@ public class NewUserActivity extends AppCompatActivity {
             user.setTelephone(telephone);
         }
 
-        user.setPrenom(prenom);
-        user.setNom(nom);
-        user.setDate(date);
-        user.setDepartement(departement);
-        user.setVille(ville);
+        if (!prenom.isEmpty() && !nom.isEmpty()) {
 
-        i.putExtra("user", user);
-        startActivity(i);
-        finish();
+            user.setPrenom(prenom);
+            user.setNom(nom);
+            user.setDate(date);
+            user.setDepartement(departement);
+            user.setVille(ville);
+
+            FirebaseDAO.addUser(user);
+
+            startActivity(i);
+            finish();
+        }else{
+            Toast.makeText(getApplicationContext(), "Renseignez le nom et le prénom", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void wikipedia() {
@@ -129,7 +136,7 @@ public class NewUserActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(),ListActivity.class);
+        Intent i = new Intent(getApplicationContext(), ListActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
         finish();
